@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/CredentialManager/assets/css/style.css?v=f928d46c484bee2d59a3f5a0dfc02a46e1c8e784">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Git Credential Manager Lib | CredentialManager</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Git Credential Manager Lib" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Packages the official Git Credential Manager cross-platform credential store implementation supporting Windows, macOS and Linux for use as a NS2.0 library with no UI or external dependencies." />
+<meta property="og:description" content="Packages the official Git Credential Manager cross-platform credential store implementation supporting Windows, macOS and Linux for use as a NS2.0 library with no UI or external dependencies." />
+<meta property="og:site_name" content="CredentialManager" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Git Credential Manager Lib" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Packages the official Git Credential Manager cross-platform credential store implementation supporting Windows, macOS and Linux for use as a NS2.0 library with no UI or external dependencies.","headline":"Git Credential Manager Lib","name":"CredentialManager","url":"/CredentialManager/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/CredentialManager/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          
+            <a id="forkme_banner" href="https://github.com/devlooped/CredentialManager">View on GitHub</a>
+          
+
+          <h1 id="project_title">CredentialManager</h1>
+          <h2 id="project_tagline">Packages the official Git Credential Manager cross-platform credential store implementation supporting Windows, macOS and Linux for use as a NS2.0 library with no UI or external dependencies.</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="-git-credential-manager-lib"><img src="https://raw.githubusercontent.com/devlooped/CredentialManager/main/assets/images/gcm.png" alt="Icon" /> Git Credential Manager Lib</h1>
+
+<p><a href="https://www.nuget.org/packages/Devlooped.CredentialManager"><img src="https://img.shields.io/nuget/vpre/Devlooped.CredentialManager.svg?color=royalblue" alt="Version" /></a>
+<a href="https://www.nuget.org/packages/Devlooped.CredentialManager"><img src="https://img.shields.io/nuget/dt/Devlooped.CredentialManager.svg?color=green" alt="Downloads" /></a>
+<a href="https://github.com/devlooped/CredentialManager/blob/main/license.txt"><img src="https://img.shields.io/github/license/devlooped/CredentialManager.svg?color=blue" alt="License" /></a>
+<a href="https://github.com/devlooped/CredentialManager/actions"><img src="https://github.com/devlooped/CredentialManager/workflows/build/badge.svg?branch=main" alt="Build" /></a></p>
+
+<!-- #content -->
+<!-- include https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
+<p><em>This project uses <a href="https://github.com/devlooped#sponsorlink">SponsorLink</a> 
+and may issue IDE-only warnings if no active sponsorship is detected.</em></p>
+
+<!-- https://github.com/devlooped/.github/raw/main/sponsorlink.md -->
+
+<p>Packages the official <a href="https://github.com/git-ecosystem/git-credential-manager/">Git Credential Manager</a> cross-platform credential store 
+implementation supporting Windows, macOS and Linux for use as a NS2.0 library with no UI or external dependencies.</p>
+
+<p>Release version numbers track the <a href="https://github.com/GitCredentialManager/git-credential-manager/releases">GCM releases</a> themselves.</p>
+
+<h2 id="usage">Usage</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">GitCredentialManager</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="n">ICredentialStore</span> <span class="n">store</span> <span class="p">=</span> <span class="n">CredentialManager</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="s">"myapp"</span><span class="p">);</span>
+
+<span class="c1">// Store a credential</span>
+<span class="n">store</span><span class="p">.</span><span class="nf">AddOrUpdate</span><span class="p">(</span><span class="s">"https://foo.com"</span><span class="p">,</span> <span class="s">"myusr"</span><span class="p">,</span> <span class="s">"mypwd"</span><span class="p">);</span>
+
+<span class="c1">// Retrieve a credential</span>
+<span class="n">ICredential</span> <span class="n">cred</span> <span class="p">=</span> <span class="n">store</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">"https://foo.com"</span><span class="p">,</span> <span class="s">"myusr"</span><span class="p">);</span>
+
+<span class="n">Assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="s">"myusr"</span><span class="p">,</span> <span class="n">cred</span><span class="p">.</span><span class="n">Account</span><span class="p">);</span>
+<span class="n">Assert</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="s">"mypwd"</span><span class="p">,</span> <span class="n">cred</span><span class="p">.</span><span class="n">Password</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The namespace for the <code class="language-plaintext highlighter-rouge">CredentialManager</code> static factory class is the same as the official GCM itself 
+for convenience: <code class="language-plaintext highlighter-rouge">GitCredentialManager</code>.</p>
+
+<p>The optional <em>namespace</em> argument (<code class="language-plaintext highlighter-rouge">myapp</code> above) can be used to scope credential 
+operations to your own app/service.</p>
+
+<p>The library targets .NET Standard 2.0 for broad applicability.</p>
+
+<p>Supported <a href="https://github.com/git-ecosystem/git-credential-manager/blob/main/docs/credstores.md">credential stores</a> and their 
+configuration is shared with the GCM project itself.</p>
+
+<!-- #content -->
+<!-- include https://github.com/devlooped/sponsors/raw/main/footer.md -->
+<h1 id="sponsors">Sponsors</h1>
+
+<!-- sponsors.md -->
+<p><a href="https://github.com/clarius"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/clarius.png" alt="Clarius Org" title="Clarius Org" /></a>
+<a href="https://github.com/KirillOsenkov"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/KirillOsenkov.png" alt="Kirill Osenkov" title="Kirill Osenkov" /></a>
+<a href="https://github.com/MFB-Technologies-Inc"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/MFB-Technologies-Inc.png" alt="MFB Technologies, Inc." title="MFB Technologies, Inc." /></a>
+<a href="https://github.com/torutek-gh"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/torutek-gh.png" alt="Torutek" title="Torutek" /></a>
+<a href="https://github.com/drivenet"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/drivenet.png" alt="DRIVE.NET, Inc." title="DRIVE.NET, Inc." /></a>
+<a href="https://github.com/Keflon"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/Keflon.png" alt="Keith Pickford" title="Keith Pickford" /></a>
+<a href="https://github.com/tbolon"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/tbolon.png" alt="Thomas Bolon" title="Thomas Bolon" /></a>
+<a href="https://github.com/kfrancis"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/kfrancis.png" alt="Kori Francis" title="Kori Francis" /></a>
+<a href="https://github.com/twenzel"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/twenzel.png" alt="Toni Wenzel" title="Toni Wenzel" /></a>
+<a href="https://github.com/unoplatform"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/unoplatform.png" alt="Uno Platform" title="Uno Platform" /></a>
+<a href="https://github.com/dansiegel"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/dansiegel.png" alt="Dan Siegel" title="Dan Siegel" /></a>
+<a href="https://github.com/rbnswartz"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/rbnswartz.png" alt="Reuben Swartz" title="Reuben Swartz" /></a>
+<a href="https://github.com/jfoshee"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/jfoshee.png" alt="Jacob Foshee" title="Jacob Foshee" /></a>
+<a href="https://github.com/eajhnsn1"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/Mrxx99.png" alt="" title="&quot;)](https://github.com/Mrxx99)
+[![Eric Johnson](https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/eajhnsn1.png &quot;Eric Johnson" /></a>
+<a href="https://github.com/IxTechnologies"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/IxTechnologies.png" alt="Ix Technologies B.V." title="Ix Technologies B.V." /></a>
+<a href="https://github.com/davidjenni"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/davidjenni.png" alt="David JENNI" title="David JENNI" /></a>
+<a href="https://github.com/Jonathan-Hickey"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/Jonathan-Hickey.png" alt="Jonathan " title="Jonathan " /></a>
+<a href="https://github.com/akunzai"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/akunzai.png" alt="Charley Wu" title="Charley Wu" /></a>
+<a href="https://github.com/jakobt"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/jakobt.png" alt="Jakob Tikjøb Andersen" title="Jakob Tikjøb Andersen" /></a>
+<a href="https://github.com/seanalexander"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/seanalexander.png" alt="Seann Alexander" title="Seann Alexander" /></a>
+<a href="https://github.com/tinohager"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/tinohager.png" alt="Tino Hager" title="Tino Hager" /></a>
+<a href="https://github.com/ploeh"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/ploeh.png" alt="Mark Seemann" title="Mark Seemann" /></a>
+<a href="https://github.com/KenBonny"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/KenBonny.png" alt="Ken Bonny" title="Ken Bonny" /></a>
+<a href="https://github.com/SimonCropp"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/SimonCropp.png" alt="Simon Cropp" title="Simon Cropp" /></a>
+<a href="https://github.com/agileworks-eu"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/agileworks-eu.png" alt="agileworks-eu" title="agileworks-eu" /></a>
+<a href="https://github.com/sorahex"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/sorahex.png" alt="sorahex" title="sorahex" /></a>
+<a href="https://github.com/arsdragonfly"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/arsdragonfly.png" alt="Zheyu Shen" title="Zheyu Shen" /></a>
+<a href="https://github.com/vezel-dev"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/vezel-dev.png" alt="Vezel" title="Vezel" /></a>
+<a href="https://github.com/ChilliCream"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/ChilliCream.png" alt="ChilliCream" title="ChilliCream" /></a>
+<a href="https://github.com/4OTC"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/4OTC.png" alt="4OTC" title="4OTC" /></a>
+<a href="https://github.com/v-limo"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/.github/avatars/v-limo.png" alt="Vincent Limo" title="Vincent Limo" /></a></p>
+
+<!-- sponsors.md -->
+
+<p><a href="https://github.com/sponsors/devlooped"><img src="https://raw.githubusercontent.com/devlooped/sponsors/main/sponsor.png" alt="Sponsor this project" title="Sponsor this project" /></a>
+ </p>
+
+<p><a href="https://github.com/sponsors">Learn more about GitHub Sponsors</a></p>
+
+<!-- https://github.com/devlooped/sponsors/raw/main/footer.md -->
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">CredentialManager maintained by <a href="https://github.com/devlooped">devlooped</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
